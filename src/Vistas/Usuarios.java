@@ -55,6 +55,14 @@ public class Usuarios extends javax.swing.JFrame {
         jTabla = new javax.swing.JTable();
         txtusuario = new javax.swing.JTextField();
         txtpass = new javax.swing.JPasswordField();
+        btnEditar = new javax.swing.JButton();
+        lblUsuario4 = new javax.swing.JLabel();
+        btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        lblUsuario5 = new javax.swing.JLabel();
+        lblUsuario6 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
+        lblUsuario7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Systema De Seguridad");
@@ -80,8 +88,8 @@ public class Usuarios extends javax.swing.JFrame {
         panelPrincipal.add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 110, 20));
 
         lblUsuario1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        lblUsuario1.setText("Crear");
-        panelPrincipal.add(lblUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 40, 20));
+        lblUsuario1.setText("Editar");
+        panelPrincipal.add(lblUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 40, 20));
 
         jSeparator1.setBackground(new java.awt.Color(250, 128, 114));
         panelPrincipal.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 124, 160, 10));
@@ -102,21 +110,21 @@ public class Usuarios extends javax.swing.JFrame {
                 btnCrearActionPerformed(evt);
             }
         });
-        panelPrincipal.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 80, 60));
+        panelPrincipal.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 80, 60));
 
         lblUsuario2.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        lblUsuario2.setText("Usuario");
-        panelPrincipal.add(lblUsuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, 20));
+        lblUsuario2.setText("ID");
+        panelPrincipal.add(lblUsuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 30, 20));
 
         ComTipo.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
         ComTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario", "Administrador" }));
         ComTipo.setBorder(null);
         ComTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelPrincipal.add(ComTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 120, -1));
+        panelPrincipal.add(ComTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 120, -1));
 
         lblUsuario3.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         lblUsuario3.setText("Tipo");
-        panelPrincipal.add(lblUsuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 40, 20));
+        panelPrincipal.add(lblUsuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 40, 20));
 
         jTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,7 +136,7 @@ public class Usuarios extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTabla);
 
-        panelPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, 110));
+        panelPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 600, 150));
 
         txtusuario.setBorder(null);
         panelPrincipal.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 170, 30));
@@ -136,7 +144,43 @@ public class Usuarios extends javax.swing.JFrame {
         txtpass.setBorder(null);
         panelPrincipal.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 160, 30));
 
-        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 360));
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
+        btnEditar.setBorder(null);
+        btnEditar.setContentAreaFilled(false);
+        panelPrincipal.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 40, 50));
+
+        lblUsuario4.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        lblUsuario4.setText("Actualizar");
+        panelPrincipal.add(lblUsuario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 80, 20));
+
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/update.png"))); // NOI18N
+        btnActualizar.setBorder(null);
+        btnActualizar.setContentAreaFilled(false);
+        panelPrincipal.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, 40));
+
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
+        btnEliminar.setBorder(null);
+        btnEliminar.setContentAreaFilled(false);
+        panelPrincipal.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, -1, 50));
+
+        lblUsuario5.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        lblUsuario5.setText("Eliminar");
+        panelPrincipal.add(lblUsuario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 70, 20));
+
+        lblUsuario6.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        lblUsuario6.setText("Crear");
+        panelPrincipal.add(lblUsuario6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 40, 20));
+
+        txtId.setEditable(false);
+        txtId.setBackground(new java.awt.Color(255, 255, 255));
+        txtId.setBorder(null);
+        panelPrincipal.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 40, 20));
+
+        lblUsuario7.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        lblUsuario7.setText("Usuario");
+        panelPrincipal.add(lblUsuario7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, 20));
+
+        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -183,7 +227,10 @@ public class Usuarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<String> ComTipo;
+    public javax.swing.JButton btnActualizar;
     public javax.swing.JButton btnCrear;
+    public javax.swing.JButton btnEditar;
+    public javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -194,7 +241,12 @@ public class Usuarios extends javax.swing.JFrame {
     private javax.swing.JLabel lblUsuario1;
     private javax.swing.JLabel lblUsuario2;
     private javax.swing.JLabel lblUsuario3;
+    private javax.swing.JLabel lblUsuario4;
+    private javax.swing.JLabel lblUsuario5;
+    private javax.swing.JLabel lblUsuario6;
+    private javax.swing.JLabel lblUsuario7;
     private javax.swing.JPanel panelPrincipal;
+    public javax.swing.JTextField txtId;
     public javax.swing.JPasswordField txtpass;
     public javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables

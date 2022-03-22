@@ -22,6 +22,9 @@ public class ControllerUser implements ActionListener {
         
         this.uservist = u;
         this.uservist.btnCrear.addActionListener(this);
+        this.uservist.btnActualizar.addActionListener(this);
+        this.uservist.btnEditar.addActionListener(this);
+         this.uservist.btnEliminar.addActionListener(this);
         
         listar(uservist.jTabla);
         
@@ -47,6 +50,42 @@ public class ControllerUser implements ActionListener {
             }
             
         }
+        if(e.getSource() == uservist.btnEditar){
+            int fila = uservist.jTabla.getSelectedRow();
+            if (fila == -1) {
+                JOptionPane.showMessageDialog(uservist, "seleciona  una fila  de  tabla");
+            } else {
+                int id = Integer.parseInt((String) uservist.jTabla.getValueAt(fila, 0).toString());
+                String user = (String) uservist.jTabla.getValueAt(fila, 1);
+                String pass = (String) uservist.jTabla.getValueAt(fila, 2);
+                Object tipo = uservist.jTabla.getValueAt(fila, 3);
+                uservist.txtId.setText("" + id);
+                uservist.txtusuario.setText(user);
+                uservist.txtpass.setText(pass);
+                uservist.ComTipo.setSelectedItem(tipo);
+        }
+        }
+        if (e.getSource() == uservist.btnActualizar) {
+            
+            if (uservist.txtusuario.getText().equals(" ") || uservist.txtpass.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(uservist, "campos vacios");
+            } else if (uservist.txtusuario.getText().length() < 5 || uservist.txtpass.getText().length() < 5) {
+                JOptionPane.showMessageDialog(uservist, " usuario o contraseña cortos estos deben  contener mas de 5 caracteres");
+            } else{           
+                actualizar();
+                limpiarFormulario();
+                limpiartablas();
+                listar(uservist.jTabla);
+           
+            }
+            
+        }
+         if (e.getSource() == uservist.btnEliminar) {
+            delete();
+            limpiartablas();
+            listar(uservist.jTabla);
+
+        }
         
     }
     
@@ -58,10 +97,10 @@ public class ControllerUser implements ActionListener {
     }
     
     public void limpiarFormulario() {
-        //uservist.xtId.setText("" );
+        uservist.txtId.setText("" );
         uservist.txtusuario.setText(" ");
-        uservist.txtpass.setText(" ");
-        uservist.ComTipo.setSelectedIndex(0);
+        uservist.txtpass.setText("");
+;        uservist.ComTipo.setSelectedIndex(0);
         
     }
     
@@ -98,5 +137,36 @@ public class ControllerUser implements ActionListener {
             JOptionPane.showMessageDialog(null, " error  al  agreagar ususrio");
         }
         
+    }
+    public void actualizar() {
+        int id = Integer.parseInt(uservist.txtId.getText());
+        String user = uservist.txtusuario.getText();
+        String pass = String.valueOf(uservist.txtpass.getPassword());
+        String tipo = (String) uservist.ComTipo.getSelectedItem();
+        String passSifrado = hash.sha1(pass);
+        this.user.setIdusuarios(id);
+        this.user.setUser(user);
+        this.user.setPass(passSifrado);
+        this.user.setTipo(tipo);
+        int r = usDao.Actualizar(this.user);
+        if (r == 1) {
+            JOptionPane.showMessageDialog(uservist, " error el usuario  no fue actualizado con exito");
+        } else {
+
+            JOptionPane.showMessageDialog(uservist, "usuario actualizado con exito");
+        }
+
+    }
+     public void delete() {
+        int fila = uservist.jTabla.getSelectedRow();
+
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(uservist, "deve seleccionar una fila");
+        } else {
+            int id = Integer.parseInt((String) uservist.jTabla.getValueAt(fila, 0).toString());
+            usDao.eliminar(id);
+
+        }
+
     }
 }

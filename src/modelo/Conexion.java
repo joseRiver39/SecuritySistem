@@ -17,7 +17,7 @@ public class Conexion {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             cn=DriverManager.getConnection(url,user,pass);
-            System.out.println("coneccion esxtosa");
+            System.out.println("coneccion exitosa");
         } catch (Exception e ) {
             System.out.println("error de coneccion");
         }

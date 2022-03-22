@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class UsuarioDAO {
 
@@ -72,5 +73,44 @@ public class UsuarioDAO {
         return datos;
 
     }
+    public int Actualizar(Usuario u){
+    int r =0;
+    String sql = "update usuarios set user=?, pass=?, tipo=? where idusuarios = ?";
+    
+     try {
+            cn = conectar.getConnection();
+            pst = cn.prepareStatement(sql);
+            pst.setString(1,u.getUser());
+            pst.setString(2,u.getPass());
+            pst.setString(3,u.getTipo());
+            pst.setInt(4,u.getIdusuarios());
+            pst.executeUpdate();
+            if(r==1){
+            return 1;
+            }else{
+            return 0;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    return  r;
+    
+    
+    }
+    public void eliminar( int id){
+     String sql = "delete from usuarios where idusuarios =" +id;
+     
+        try {
+            cn=conectar.getConnection();
+            pst = cn.prepareStatement(sql);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Usuario Eliminado");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"lo sentimos su consulta no pudo ser resuelta");
+            System.err.println(e);
+        }
+    
+    }
+    
 
 }
