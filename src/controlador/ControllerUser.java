@@ -1,7 +1,10 @@
 package controlador;
 
 import Model.hash;
+import Vistas.Loggin;
 import Vistas.Usuarios;
+import Vistas.menu;
+import Vistas.menuAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -16,17 +19,27 @@ public class ControllerUser implements ActionListener {
     UsuarioDAO usDao = new UsuarioDAO();
     Usuario user = new Usuario();
     Usuarios uservist = new Usuarios();
+    Loggin log = new Loggin();
     DefaultTableModel model = new DefaultTableModel();
     
     public ControllerUser(Usuarios u) {
         
-        this.uservist = u;
+        this.uservist = u;        
         this.uservist.btnCrear.addActionListener(this);
         this.uservist.btnActualizar.addActionListener(this);
         this.uservist.btnEditar.addActionListener(this);
-         this.uservist.btnEliminar.addActionListener(this);
+        this.uservist.btnEliminar.addActionListener(this);
+        this.log.btnLoggin.addActionListener(this);
         
         listar(uservist.jTabla);
+        
+    }
+
+    public ControllerUser(Loggin l) {
+        
+        this.log = l;        
+        
+        this.log.btnLoggin.addActionListener(this);
         
     }
     
@@ -38,19 +51,19 @@ public class ControllerUser implements ActionListener {
                 JOptionPane.showMessageDialog(uservist, "campos vacios");
             } else if (uservist.txtusuario.getText().length() < 5 || uservist.txtpass.getText().length() < 5) {
                 JOptionPane.showMessageDialog(uservist, " usuario o contraseña cortos estos deben  contener mas de 5 caracteres");
-            } else{
-           if(usDao.validarUsuario(uservist.txtusuario.getText()) == 0) {
-                agregar();
-                limpiarFormulario();
-                limpiartablas();
-                listar(uservist.jTabla);
-           }else{
-           JOptionPane.showMessageDialog(uservist, " el usuario ya esta en uso ");
-           } 
+            } else {
+                if (usDao.validarUsuario(uservist.txtusuario.getText()) == 0) {
+                    agregar();
+                    limpiarFormulario();
+                    limpiartablas();
+                    listar(uservist.jTabla);
+                } else {
+                    JOptionPane.showMessageDialog(uservist, " el usuario ya esta en uso ");
+                }                
             }
             
         }
-        if(e.getSource() == uservist.btnEditar){
+        if (e.getSource() == uservist.btnEditar) {
             int fila = uservist.jTabla.getSelectedRow();
             if (fila == -1) {
                 JOptionPane.showMessageDialog(uservist, "seleciona  una fila  de  tabla");
@@ -63,7 +76,7 @@ public class ControllerUser implements ActionListener {
                 uservist.txtusuario.setText(user);
                 uservist.txtpass.setText(pass);
                 uservist.ComTipo.setSelectedItem(tipo);
-        }
+            }
         }
         if (e.getSource() == uservist.btnActualizar) {
             
@@ -71,20 +84,30 @@ public class ControllerUser implements ActionListener {
                 JOptionPane.showMessageDialog(uservist, "campos vacios");
             } else if (uservist.txtusuario.getText().length() < 5 || uservist.txtpass.getText().length() < 5) {
                 JOptionPane.showMessageDialog(uservist, " usuario o contraseña cortos estos deben  contener mas de 5 caracteres");
-            } else{           
+            } else {                
                 actualizar();
                 limpiarFormulario();
                 limpiartablas();
                 listar(uservist.jTabla);
-           
+                
             }
             
         }
-         if (e.getSource() == uservist.btnEliminar) {
+        if (e.getSource() == uservist.btnEliminar) {
             delete();
             limpiartablas();
             listar(uservist.jTabla);
-
+            
+        }
+        if (e.getSource() == log.btnLoggin) {
+            
+            if (log.txtUserLog.getText().isEmpty() && log.txtpassLog.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(log, "campos vacios");
+            } else {                
+                loggin();
+                
+            }
+            
         }
         
     }
@@ -97,10 +120,11 @@ public class ControllerUser implements ActionListener {
     }
     
     public void limpiarFormulario() {
-        uservist.txtId.setText("" );
+        uservist.txtId.setText("");
         uservist.txtusuario.setText(" ");
         uservist.txtpass.setText("");
-;        uservist.ComTipo.setSelectedIndex(0);
+        ;
+        uservist.ComTipo.setSelectedIndex(0);
         
     }
     
@@ -138,6 +162,7 @@ public class ControllerUser implements ActionListener {
         }
         
     }
+
     public void actualizar() {
         int id = Integer.parseInt(uservist.txtId.getText());
         String user = uservist.txtusuario.getText();
@@ -152,21 +177,49 @@ public class ControllerUser implements ActionListener {
         if (r == 1) {
             JOptionPane.showMessageDialog(uservist, " error el usuario  no fue actualizado con exito");
         } else {
-
+            
             JOptionPane.showMessageDialog(uservist, "usuario actualizado con exito");
         }
-
+        
     }
-     public void delete() {
-        int fila = uservist.jTabla.getSelectedRow();
 
+    public void delete() {
+        int fila = uservist.jTabla.getSelectedRow();
+        
         if (fila == -1) {
             JOptionPane.showMessageDialog(uservist, "deve seleccionar una fila");
         } else {
             int id = Integer.parseInt((String) uservist.jTabla.getValueAt(fila, 0).toString());
             usDao.eliminar(id);
-
+            
         }
+        
+    }
 
+    public void loggin() {
+        
+        String user = log.txtUserLog.getText();
+        String pass = String.valueOf(log.txtpassLog.getPassword());        
+        String passSifrado = hash.sha1(pass);
+        this.user.setUser(user);
+        this.user.setPass(passSifrado);
+        boolean r = usDao.loggin(this.user);
+        if (r == true) {
+            if (this.user.getTipo().equals("Administrador")) {
+                menuAdmin menuAdm = new menuAdmin();
+                menuAdm.setVisible(true);
+                log.dispose();
+                
+            } else if (this.user.getTipo().equals("Usuario")) {
+                
+                menu menuUser = new menu();
+                menuUser.setVisible(true);
+                log.dispose();                
+            }
+            
+        } else {            
+            JOptionPane.showMessageDialog(null, " error  de autenticacion verifique usuario o password");
+        }
+        
     }
 }

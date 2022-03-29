@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import controlador.ControllerUser;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -14,13 +15,17 @@ import java.awt.Toolkit;
  */
 public class menuAdmin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form menu
-     */
+   Loggin log;
+   Usuarios user;
+   visitantes vist;
+   
+   
     public menuAdmin() {
         initComponents();
         setLocationRelativeTo(null);
         setIconImage(getIconImage());
+        
+        
     }
   @Override
     public Image getIconImage() {
@@ -44,7 +49,6 @@ public class menuAdmin extends javax.swing.JFrame {
         btntransporte = new javax.swing.JButton();
         btnVisitantes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -73,7 +77,7 @@ public class menuAdmin extends javax.swing.JFrame {
         btnContratistas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/contratistas.png"))); // NOI18N
         btnContratistas.setBorder(null);
         btnContratistas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(btnContratistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 160, 80));
+        jPanel1.add(btnContratistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 160, 80));
 
         btntransporte.setBackground(new java.awt.Color(255, 252, 252));
         btntransporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tuck.png"))); // NOI18N
@@ -85,44 +89,43 @@ public class menuAdmin extends javax.swing.JFrame {
                 btntransporteActionPerformed(evt);
             }
         });
-        jPanel1.add(btntransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 80, 80));
+        jPanel1.add(btntransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 80, 80));
 
         btnVisitantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/visitante.png"))); // NOI18N
         btnVisitantes.setBorder(null);
         btnVisitantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(btnVisitantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 80, -1));
+        jPanel1.add(btnVisitantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 80, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Usuarios");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 80, 30));
-
-        jLabel3.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Registra :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 100, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, 80, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Despachos");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 120, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 120, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Visitantes");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 90, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 90, 30));
 
         jLabel6.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Contratistas");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 110, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 110, 30));
 
         btnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/userNeo.png"))); // NOI18N
         btnUser.setContentAreaFilled(false);
         btnUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUser.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnUser.setLabel("");
-        jPanel1.add(btnUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, 100, 90));
+        btnUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUserActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, 100, 90));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 350));
 
@@ -132,6 +135,18 @@ public class menuAdmin extends javax.swing.JFrame {
     private void btntransporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntransporteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btntransporteActionPerformed
+
+    private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
+        
+       if (user== null){
+           
+        user = new Usuarios();
+        controlador.ControllerUser  Ctr= new ControllerUser(user);
+        user.setVisible(true);
+       
+       }
+        
+    }//GEN-LAST:event_btnUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,7 +191,6 @@ public class menuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btntransporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

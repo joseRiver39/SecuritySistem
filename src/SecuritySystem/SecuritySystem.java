@@ -1,4 +1,3 @@
-
 package SecuritySystem;
 
 import Vistas.Loggin;
@@ -7,11 +6,10 @@ import controlador.ControllerUser;
 
 public class SecuritySystem {
 
-  
-    public static void main(String[] args) {
-     Usuarios u = new Usuarios();
-     ControllerUser  Cuser  = new ControllerUser(u);
-     u.setVisible(true);
+    public static void main(String[] args) {       
+        Loggin l = new Loggin();
+        ControllerUser Cuser = new ControllerUser(l);       
+        l.setVisible(true);
     }
-    
+
 }

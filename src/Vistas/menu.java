@@ -44,7 +44,6 @@ public class menu extends javax.swing.JFrame {
         btntransporte = new javax.swing.JButton();
         btnVisitantes = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -63,15 +62,15 @@ public class menu extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial Narrow", 3, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("elige una opcion :");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, 30));
+        jLabel2.setText("REGISTRO DE  INGRESOS :");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 270, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 50));
 
         btnContratistas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/contratistas.png"))); // NOI18N
         btnContratistas.setBorder(null);
         btnContratistas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(btnContratistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 160, 80));
+        jPanel1.add(btnContratistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 160, 80));
 
         btntransporte.setBackground(new java.awt.Color(255, 252, 252));
         btntransporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tuck.png"))); // NOI18N
@@ -83,32 +82,27 @@ public class menu extends javax.swing.JFrame {
                 btntransporteActionPerformed(evt);
             }
         });
-        jPanel1.add(btntransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 80, 80));
+        jPanel1.add(btntransporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 80, 80));
 
         btnVisitantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/visitante.png"))); // NOI18N
         btnVisitantes.setBorder(null);
         btnVisitantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(btnVisitantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 80, -1));
+        jPanel1.add(btnVisitantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 80, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Contratistas");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 110, 30));
-
-        jLabel3.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Registra :");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 100, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 110, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Despachos");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 120, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 120, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Visitantes");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 90, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 90, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 350));
 
@@ -160,7 +154,6 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JButton btntransporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;

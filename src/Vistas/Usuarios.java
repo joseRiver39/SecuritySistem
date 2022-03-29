@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import controlador.ControllerUser;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.plaf.basic.BasicBorders;
@@ -14,6 +15,8 @@ import javax.swing.plaf.basic.BasicBorders;
  * @author usuario
  */
 public class Usuarios extends javax.swing.JFrame {
+
+    public boolean setVisible;
 
     /**
      * Creates new form Loggin
@@ -64,7 +67,7 @@ public class Usuarios extends javax.swing.JFrame {
         txtId = new javax.swing.JTextField();
         lblUsuario7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Systema De Seguridad");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -89,7 +92,7 @@ public class Usuarios extends javax.swing.JFrame {
 
         lblUsuario1.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         lblUsuario1.setText("Editar");
-        panelPrincipal.add(lblUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 40, 20));
+        panelPrincipal.add(lblUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 40, 20));
 
         jSeparator1.setBackground(new java.awt.Color(250, 128, 114));
         panelPrincipal.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 124, 160, 10));
@@ -110,21 +113,21 @@ public class Usuarios extends javax.swing.JFrame {
                 btnCrearActionPerformed(evt);
             }
         });
-        panelPrincipal.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 80, 60));
+        panelPrincipal.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 80, 60));
 
         lblUsuario2.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         lblUsuario2.setText("ID");
-        panelPrincipal.add(lblUsuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 30, 20));
+        panelPrincipal.add(lblUsuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 30, 20));
 
         ComTipo.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
         ComTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario", "Administrador" }));
         ComTipo.setBorder(null);
         ComTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        panelPrincipal.add(ComTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 120, -1));
+        panelPrincipal.add(ComTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 120, -1));
 
         lblUsuario3.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         lblUsuario3.setText("Tipo");
-        panelPrincipal.add(lblUsuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 40, 20));
+        panelPrincipal.add(lblUsuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 40, 20));
 
         jTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -136,7 +139,7 @@ public class Usuarios extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTabla);
 
-        panelPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 600, 150));
+        panelPrincipal.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 600, 150));
 
         txtusuario.setBorder(null);
         panelPrincipal.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 170, 30));
@@ -147,40 +150,40 @@ public class Usuarios extends javax.swing.JFrame {
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
         btnEditar.setBorder(null);
         btnEditar.setContentAreaFilled(false);
-        panelPrincipal.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 40, 50));
+        panelPrincipal.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 40, 50));
 
         lblUsuario4.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         lblUsuario4.setText("Actualizar");
-        panelPrincipal.add(lblUsuario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 80, 20));
+        panelPrincipal.add(lblUsuario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 80, 20));
 
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/update.png"))); // NOI18N
         btnActualizar.setBorder(null);
         btnActualizar.setContentAreaFilled(false);
-        panelPrincipal.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, 40));
+        panelPrincipal.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, 40));
 
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))); // NOI18N
         btnEliminar.setBorder(null);
         btnEliminar.setContentAreaFilled(false);
-        panelPrincipal.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, -1, 50));
+        panelPrincipal.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, 50));
 
         lblUsuario5.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         lblUsuario5.setText("Eliminar");
-        panelPrincipal.add(lblUsuario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 70, 20));
+        panelPrincipal.add(lblUsuario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 70, 20));
 
         lblUsuario6.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         lblUsuario6.setText("Crear");
-        panelPrincipal.add(lblUsuario6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 40, 20));
+        panelPrincipal.add(lblUsuario6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 40, 20));
 
         txtId.setEditable(false);
         txtId.setBackground(new java.awt.Color(255, 255, 255));
         txtId.setBorder(null);
-        panelPrincipal.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 40, 20));
+        panelPrincipal.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 40, 20));
 
         lblUsuario7.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         lblUsuario7.setText("Usuario");
         panelPrincipal.add(lblUsuario7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 110, 20));
 
-        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 400));
+        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -193,6 +196,10 @@ public class Usuarios extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
+        
+         Usuarios u = new Usuarios();
+         ControllerUser  Cusers  = new ControllerUser(u);
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

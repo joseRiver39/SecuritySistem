@@ -47,10 +47,10 @@ public class Loggin extends javax.swing.JFrame {
         lblPass = new javax.swing.JLabel();
         lblUsuario1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        txtUser = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtUserLog = new javax.swing.JTextField();
+        txtpassLog = new javax.swing.JPasswordField();
         jSeparator2 = new javax.swing.JSeparator();
-        btnEnter = new javax.swing.JButton();
+        btnLoggin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Systema De Seguridad");
@@ -86,45 +86,45 @@ public class Loggin extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(250, 128, 114));
         panelPrincipal.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 124, 160, 10));
 
-        txtUser.setBorder(null);
-        txtUser.addActionListener(new java.awt.event.ActionListener() {
+        txtUserLog.setBorder(null);
+        txtUserLog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserActionPerformed(evt);
+                txtUserLogActionPerformed(evt);
             }
         });
-        panelPrincipal.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 150, 20));
+        panelPrincipal.add(txtUserLog, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 150, 20));
 
-        jPasswordField1.setBorder(null);
-        panelPrincipal.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 150, 20));
+        txtpassLog.setBorder(null);
+        panelPrincipal.add(txtpassLog, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 150, 20));
 
         jSeparator2.setBackground(new java.awt.Color(250, 128, 114));
         panelPrincipal.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 160, 10));
 
-        btnEnter.setBackground(new java.awt.Color(250, 128, 114));
-        btnEnter.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        btnEnter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGIN001.png"))); // NOI18N
-        btnEnter.setBorder(null);
-        btnEnter.setContentAreaFilled(false);
-        btnEnter.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEnter.addActionListener(new java.awt.event.ActionListener() {
+        btnLoggin.setBackground(new java.awt.Color(250, 128, 114));
+        btnLoggin.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        btnLoggin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LOGIN001.png"))); // NOI18N
+        btnLoggin.setBorder(null);
+        btnLoggin.setContentAreaFilled(false);
+        btnLoggin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLoggin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnterActionPerformed(evt);
+                btnLogginActionPerformed(evt);
             }
         });
-        panelPrincipal.add(btnEnter, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 150, 50));
+        panelPrincipal.add(btnLoggin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 150, 50));
 
         getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 280));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+    private void txtUserLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserLogActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserActionPerformed
+    }//GEN-LAST:event_txtUserLogActionPerformed
 
-    private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
+    private void btnLogginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEnterActionPerformed
+    }//GEN-LAST:event_btnLogginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,16 +162,16 @@ public class Loggin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEnter;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lblPass;
-    private javax.swing.JLabel lblUsuario1;
-    private javax.swing.JPanel panelPrincipal;
-    private javax.swing.JTextField txtUser;
+    public javax.swing.JButton btnLoggin;
+    public static javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel jLabel2;
+    public static javax.swing.JPanel jPanel1;
+    public static javax.swing.JSeparator jSeparator1;
+    public static javax.swing.JSeparator jSeparator2;
+    public static javax.swing.JLabel lblPass;
+    public static javax.swing.JLabel lblUsuario1;
+    public static javax.swing.JPanel panelPrincipal;
+    public javax.swing.JTextField txtUserLog;
+    public javax.swing.JPasswordField txtpassLog;
     // End of variables declaration//GEN-END:variables
 }

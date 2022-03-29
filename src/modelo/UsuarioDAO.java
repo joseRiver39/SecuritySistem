@@ -38,8 +38,7 @@ public class UsuarioDAO {
             cn = conectar.getConnection();
             pst = cn.prepareStatement(sql);
             pst.setString(1, usuario);
-            rs =pst.executeQuery();
-            
+            rs =pst.executeQuery();            
             
             if(rs.next()){
             return rs.getInt(1);
@@ -50,7 +49,34 @@ public class UsuarioDAO {
         return 1;
 
     }
+ public boolean loggin(Usuario  usr) {
 
+        String sql = "select * from usuarios where user = ?";
+        try {
+            cn = conectar.getConnection();
+            pst = cn.prepareStatement(sql);
+            pst.setString(1,usr.getUser());
+            rs =pst.executeQuery();            
+            
+            if(rs.next()){
+                
+                if(usr.getPass().equals(rs.getString(3))){
+                usr.setIdusuarios(1);
+                usr.setUser(rs.getString(2));
+                usr.setTipo(rs.getString(4));
+                return true;
+                }else{
+                return false;               
+                }
+            
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        return  false;
+
+    }
     public List listar() {
 
         List<Usuario> datos = new ArrayList<>();
